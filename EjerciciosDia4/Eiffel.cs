@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 namespace EjerciciosDia4
 {
-    #region classes
+    
 
     class Eiffel
     {
@@ -33,6 +33,6 @@ namespace EjerciciosDia4
         }
     }
 
-    #endregion
+   
 
 }

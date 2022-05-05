@@ -26,7 +26,7 @@ namespace EjerciciosDia4
    
         }
 
-        new public void retirar(float cantidad)
+        override public void retirar(float cantidad)
         {
             if(esTitularValido())
             {
@@ -39,7 +39,7 @@ namespace EjerciciosDia4
             }
         }
 
-        new public void mostrar()
+        override public void mostrar()
         {
             Console.WriteLine("Cuenta Joven: ");
             mostrar();

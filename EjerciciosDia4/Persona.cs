@@ -38,7 +38,6 @@ namespace EjerciciosDia4
             Console.WriteLine("La edad de esta persona es " +this.edad);
             Console.WriteLine();
             Console.WriteLine("El DNI de esta persona es " + this.dNI);
-
         }
 
         public bool esMayorDeEdad()

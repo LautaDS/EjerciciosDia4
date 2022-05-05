@@ -27,7 +27,7 @@ namespace EjerciciosDia4
 
       
 
-        public void mostrar()
+        public virtual void mostrar()
         {
             titular.mostrar();
             Console.WriteLine("El dinero en esta cuenta es " + cantidad);
@@ -41,7 +41,7 @@ namespace EjerciciosDia4
             }
         }
 
-        public void retirar(float cantidad)
+        public virtual void retirar(float cantidad)
         {
             if(cantidad > 0)
             {
