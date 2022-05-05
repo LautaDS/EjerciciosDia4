@@ -12,9 +12,7 @@ namespace EjerciciosDia4
             {
                 Console.WriteLine("Por favor elija que ejercicio quiere ver:");
                 Console.WriteLine("(1) Ejercicio 1");
-                Console.WriteLine("(2) ");
-                Console.WriteLine("(3) ");
-                Console.WriteLine("(4) ");
+                Console.WriteLine("(2) Ejercicio 8, albumes.");
                 Console.WriteLine("(0) Salir");
 
                 try
@@ -35,7 +33,7 @@ namespace EjerciciosDia4
 
 
                     case (2):
-                       
+                        program.Ejercicio2();
                         break;
 
                     case (0):
@@ -59,11 +57,14 @@ namespace EjerciciosDia4
     public void Ejercicio1()
     {
             Persona[] personas = new Persona[3];
-
+            string nombre;
             for (int i = 0; i < personas.Length; i++)
             {
                 Console.Write("Por favor ingrese un nombre ");
-                personas[i].Nombre = new string(Console.ReadLine());
+                nombre = Console.ReadLine();
+                personas[i] = new Persona();
+                personas[i].Nombre = nombre;
+              
             }
 
             for (int i = 0; i < personas.Length; i++)
@@ -76,7 +77,25 @@ namespace EjerciciosDia4
 
     public void Ejercicio2()
         {
+            int fotos;
+            do
+            {
 
+                Console.WriteLine("Por favor ingrese cuantas pagians de album el ultimo album tendra");
+                try
+                {
+                    fotos = Int32.Parse(Console.ReadLine());
+                }
+                catch
+                {
+                    Console.WriteLine("Ese no es un numero correcto");
+                    fotos = 0;
+                }
+            } while (fotos == 0);
+
+            AlbumTest albumTest = new AlbumTest(fotos);
+            albumTest.Mostrar();
+            Console.ReadLine();
         }
 
     #endregion
@@ -91,7 +110,8 @@ namespace EjerciciosDia4
 
 
     #region classes
-
+    
+    
     class Persona
     {
         private string nombre;
@@ -101,6 +121,11 @@ namespace EjerciciosDia4
         public string Nombre { get => nombre; set => nombre = value; }
         public int Edad { get => edad; set => edad = value; }
         public int DNI { get => dNI; set => dNI = value; }
+
+        public Persona()
+        {
+
+        }
 
         public Persona(string nombre, int edad, int dNI)
         {
@@ -113,7 +138,7 @@ namespace EjerciciosDia4
         {
             return "the name of this person is " + this.Nombre;
         }
-
+        
         public void mostrar ()
         {
             Console.WriteLine("El nombre de esta persona es " +this.nombre);
@@ -127,12 +152,14 @@ namespace EjerciciosDia4
             return this.edad >= 18;
         }
     }
-    #endregion
+    
 
     class Cuenta
     {
         Persona titular;
         float cantidad = 0f;
+            public float Cantidad { get => cantidad; set => cantidad = value; }
+            internal Persona Titular { get => titular; set => titular = value; }
 
         public Cuenta()
         {
@@ -149,8 +176,7 @@ namespace EjerciciosDia4
             this.cantidad = cantidad;
         }
 
-        public float Cantidad { get => cantidad; set => cantidad = value; }
-        internal Persona Titular { get => titular; set => titular = value; }
+      
 
         public void mostrar()
         {
@@ -251,5 +277,56 @@ namespace EjerciciosDia4
         }
     }
 
+    class AlbumFotos
+    {
+        private int numPaginas;
+
+        
+        public AlbumFotos()
+        {
+            this.numPaginas = 16;
+        }
+        public AlbumFotos(int numPaginas)
+        {
+            this.numPaginas = numPaginas;
+        }
+
+        public int NumPaginas { get => numPaginas; set => numPaginas = value; }
+
+
+
+
+    }
+
+    class SuperAlbumFotos : AlbumFotos
+    {
+        public SuperAlbumFotos()
+        {
+            this.NumPaginas = 64;
+        }
+
+    }
+
+
+    class AlbumTest
+    {
+        AlbumFotos albumDefault = new AlbumFotos();
+        SuperAlbumFotos albumSuper = new SuperAlbumFotos();
+        AlbumFotos album = new AlbumFotos();
+
+        public AlbumTest (int fotosAlbum)
+        {
+            this.album.NumPaginas = fotosAlbum;
+        }
+
+        public void Mostrar()
+        {
+            Console.WriteLine("El album default tiene " + albumDefault.NumPaginas + " paginas");
+            Console.WriteLine("El album super tiene " + albumSuper.NumPaginas + " paginas");
+            Console.WriteLine("Y el album que ingreso tiene " + album.NumPaginas + " paginas" );
+        }
+    }
+
+    #endregion
 
 }
